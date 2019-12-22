@@ -7,7 +7,7 @@ import pandas as pd
 
 from selenium import webdriver
 
-GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 
 chrome_options = webdriver.ChromeOptions()
@@ -15,15 +15,16 @@ chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.binary_location = GOOGLE_CHROME_PATH
 
-def init_browser():
-    # executable_path = {"executable_path": "chromedriver.exe"}
-    # return Browser("chrome", **executable_path, headless=False)
-    browser = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
-    return browser
+# def init_browser():
+#     # executable_path = {"executable_path": "chromedriver.exe"}
+#     # return Browser("chrome", **executable_path, headless=False)
+#     browser = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+#     return browser
 
 
 def scrape():
-    browser = init_browser()
+    # browser = init_browser()
+    browser = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
     # visit NASA's Mars Exploration Program news site
     url_news = 'https://mars.nasa.gov/news'

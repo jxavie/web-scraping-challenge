@@ -7,7 +7,7 @@ import os
 username = os.environ.get("username")
 password = os.environ.get("password")
 cluster = os.environ.get("cluster")
-remote_db_port = os.environ.get("remote_db_port")
+# remote_db_port = os.environ.get("remote_db_port")
 dbname = os.environ.get("dbname")
 
 # Create an instance of Flask
