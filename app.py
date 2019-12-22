@@ -12,7 +12,7 @@ dbname = os.environ.get("dbname")
 
 # Create an instance of Flask
 app = Flask(__name__)
-app.config["MONGO_URI"] = f"mongodb+srv://{username}:{password}@c{cluster}/{dbname}?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = f"mongodb+srv://{username}:{password}@{cluster}/{dbname}?retryWrites=true&w=majority"
 
 # Use PyMongo to establish Mongo connection
 # mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_scraped')
