@@ -1,11 +1,18 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import scrape_mars
-import pymongo
+import os
+
+# import credentials
+username = os.environ.get("username")
+password = os.environ.get("password")
+cluster = os.environ.get("cluster")
+remote_db_port = os.environ.get("remote_db_port")
+dbname = os.environ.get("dbname")
 
 # Create an instance of Flask
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb+srv://admin:mongodb_JNJ13!@cluster0-o4cjj.mongodb.net/mars_scraped?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = f"mongodb+srv://{username}:{password}@c{cluster}/{dbname}?retryWrites=true&w=majority"
 
 # Use PyMongo to establish Mongo connection
 # mongo = PyMongo(app, uri='mongodb://localhost:27017/mars_scraped')
