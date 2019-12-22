@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+      /* background-color: rgb(8, 8, 8); */
+      background-color: black;
+    }
+    .navbar {
+      color: rgba(252, 85, 56, 0.884);
+      font-variant: small-caps;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding-top: 0;
+      padding-bottom: 0;
+      /* background-color: #343a40; */
+      background-color: rgba(252, 85, 56);
+    }
+    .navbar-brand {
+      /* background-color: rgb(8, 8, 8); */
+      background-color: black;
+      font-size: 35px;
+      font-weight: bolder;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 40px;
+      padding-right: 40px;
+      /* margin-left: 5px; */
+    }
+    .btn {
+      color: rgba(252, 85, 56, 0.884);
+      background-color: rgb(8, 8, 8);
+      font-weight: bold;
+    }
+    .card{
+      background-color: rgba(252, 85, 56, 0.884);
+      margin-bottom: 30px;
+    }
+    .card-title {
+      /* color: rgb(20, 20, 20); */
+      color: black;
+      font-variant: small-caps;
+      padding-top: 0;
+    }
+    .card-text {
+      /* color: rgb(30, 30, 30); */
+      color: black;
+      font-weight: 600;
+    }
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-item {
+      align-items: center;
+    }
+    h4 {
+      color: rgba(252, 85, 56, 0.884);
+      font-style: italic;
+      font-variant: small-caps;
+      /* font-weight: bold; */
+      padding-bottom: 50px;
+    }
+    #mars_table {
+      color: black;
+    }
+    .source {
+      color: rgba(252, 85, 56, 0.884);
+    }
+    ul li a {
+      color: rgba(252, 85, 56, 0.884);
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-colors fixed-top">
+  <a class="navbar-brand">MISSION TO MARS</a>
+  <ul class="navbar-nav ml-auto">
+    <li>
+      <a class="btn btn-lg" href="/scrape" role="button">
+        Get Data!
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid" style="margin-top: 100px;">
+  <div class="row" style="margin-left: 0px; margin-right: 0px;">
+    <div class="col-lg-8 col-md-12" style="margin-bottom: 30px;">
+      <div id="images" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+          <li data-target="#images" data-slide-to="0" class="active"></li>
+          <li data-target="#images" data-slide-to="1"></li>
+          <li data-target="#images" data-slide-to="2"></li>
+          <li data-target="#images" data-slide-to="3"></li>
+          <li data-target="#images" data-slide-to="4"></li>
+        </ul>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <h4>Featured Image</h4>
+            <img src="{{ mars.featured_image_url }}" alt="Featured Image" width="1100" height="500">
+            <!-- <img src="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg" width="1100" height="500"> -->
+          </div>
+          <div class="carousel-item">
+            <h4>{{ mars.hemisphere_image_urls[0]['title'] }}</h4>
+            <img src="{{ mars.hemisphere_image_urls[0]['image_url'] }}" alt="Cerberus Hemisphere" width="1100" height="500">
+            <!-- <img src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="1100" height="500"> -->
+          </div>
+          <div class="carousel-item">
+            <h4>{{ mars.hemisphere_image_urls[1]['title'] }}</h4>
+            <img src="{{ mars.hemisphere_image_urls[1]['image_url'] }}" alt="Schiaparelli Hemisphere" width="1100" height="500">
+            <!-- <img src="https://cdn.pixabay.com/photo/2016/01/08/11/57/butterfly-1127666__340.jpg" width="1100" height="500"> -->
+          </div>
+          <div class="carousel-item">
+            <h4 max-width=100% height="auto">{{ mars.hemisphere_image_urls[2]['title'] }}</h4>
+            <img src="{{ mars.hemisphere_image_urls[2]['image_url'] }}" alt="Syrtis Major Hemisphere" width="1100" height="500">
+            <!-- <img src="https://i1.adis.ws/i/canon/canon-get-inspired-urban-nature-photography-tips-1-1920x1080-tint?qlt=80&w=100%&sm=aspect&aspect=16:9&fmt=jpg&fmt.options=interlaced&bg=rgb(255,255,255)" width="1100" height="500"> -->
+          </div>
+          <div class="carousel-item">
+            <h4>{{ mars.hemisphere_image_urls[3]['title'] }}</h4>
+            <img src="{{ mars.hemisphere_image_urls[3]['image_url'] }}" alt="Valles Marineris Hemisphere" width="1100" height="500">
+            <!-- <img src="https://therightsofnature.org/wp-content/uploads/2018/01/turkey-3048299_1920-1366x550.jpg" width="1100" height="500"> -->
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#images" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#images" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Latest Mars News</h3>
+          <hr class="my-3">
+          <p class="card-text"><i>{{ mars.latest_news[0] }}</i></p>
+          <p class="card-text">{{ mars.latest_news[1] }}</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Current Mars Weather</h3>
+          <hr class="my-3">
+          <p class="card-text">{{ mars.mars_weather }}</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Mars Facts</h3>
+          <hr class="my-3">
+          <div>
+            <div id="mars_table" class="d-flex justify-content-center"></div>
+            
+            <script>
+            
+            function unescapeHtml(safe) {
+                return safe.replace(/&amp;/g, '&')
+                    .replace(/&lt;/g, '<')
+                    .replace(/&gt;/g, '>')
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#039;/g, "'");
+            }
+            
+            var htmldata = `{{mars.mars_facts}}`; 
+            
+            htmldata = unescapeHtml(htmldata);
+          
+            console.log(htmldata);
+            
+            document.getElementById("mars_table").innerHTML = htmldata;
+          
+            </script>
+            
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 20px; background-color: black;">
+        <div class="card-body">
+          <h4 class="card-title pb-0" style="color: rgba(252, 85, 56, 0.884);">
+            <i>Sources:</i>
+          </h4>
+          <ul style="padding-left: 25px;">
+            <li class="source">
+              <a href="https://mars.nasa.gov/news">https://mars.nasa.gov/news</a>
+            </li>
+            <li class="source">
+              <a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars">
+                https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars
+              </a>
+            </li>
+            <li class="source">
+              <a href="https://twitter.com/marswxreport">https://twitter.com/marswxreport</a>
+            </li>
+            <li class="source">
+              <a href="https://space-facts.com/mars/">https://space-facts.com/mars/</a>
+            </li>
+            <li class="source">
+              <a href="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars">
+                https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+
+
+</html>
